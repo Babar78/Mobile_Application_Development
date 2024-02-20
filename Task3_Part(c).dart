@@ -1,6 +1,6 @@
 class Position {
-  double x;
-  double y;
+  final double x;
+  final double y;
 
   Position(this.x, this.y);
 
@@ -9,8 +9,8 @@ class Position {
 }
 
 class Size {
-  double w;
-  double h;
+  final double w;
+  final double h;
 
   Size(this.w, this.h);
 
@@ -27,23 +27,21 @@ class Frame {
 
   // b) Redirecting constructor
   Frame.fromPosition(Position position)
-      : this(Position.Origin(), Size.Zero()) {
-    _position = position;
-  }
+      : this(Position.Origin(), Size.Zero());
 
   // c) Getters and setters for Position & Size
-  Position get Position => _position;
-  set Position(Position value) => _position = value;
+  Position get position => _position;
+  set position(Position value) => _position = value;
 
-  Size get Size => _size;
-  set Size(Size value) => _size = value;
+  Size get size => _size;
+  set size(Size value) => _size = value;
 
   // d) Getters for underlying X, Y, W, H properties
-  double get X => _position.x;
-  double get Y => _position.y;
+  double get x => _position.x;
+  double get y => _position.y;
 
-  double get W => _size.w;
-  double get H => _size.h;
+  double get w => _size.w;
+  double get h => _size.h;
 
   // e) Factory constructor that throws an exception for negative values
   factory Frame.noNegative(Position position, Size size) {
@@ -69,8 +67,8 @@ void main() {
 
   // Using cascading to modify properties
   Frame frame2 = Frame(Position(3, 7), Size(25, 30))
-    ..Position = Position.Origin()
-    ..Size = Size.Zero();
+    ..position = const Position.Origin()
+    ..size = const Size.Zero();
   print('Frame 2: $frame2');
 
   // Creating a Frame using the redirecting constructor
