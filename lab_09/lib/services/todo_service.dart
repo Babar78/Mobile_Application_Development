@@ -4,7 +4,7 @@ import 'package:lab_09/models/todo.dart';
 import 'package:http/http.dart' as http;
 
 class TodoService {
-  Future<List<Todo>> fetchTodo() async {
+  static Future<List<Todo>> fetchTodo() async {
     String stringUrl = 'https://jsonplaceholder.typicode.com/todos';
     final response = await http.get(Uri.parse(stringUrl));
     List<Todo> todoList = [];
@@ -14,9 +14,8 @@ class TodoService {
       jsonResponse.forEach((element) {
         todoList.add(Todo.fromJson(element));
       });
-      return todoList;
-    } else {
-      return todoList;
     }
+    await Future.delayed(Duration(seconds: 5));
+    return todoList;
   }
 }
