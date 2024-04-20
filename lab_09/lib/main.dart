@@ -21,35 +21,40 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Future<String> reportUserRole() async {
-    String userRole = await fetchRole();
-    return Future.delayed(
-        const Duration(seconds: 2), () => 'User role: $userRole');
+  reportLogins() async {
+    int loginNumber = await fetchLoginAmount();
+    return 'Total number of logins: $loginNumber';
   }
 
-  Future<String> fetchRole() async {
-    return Future.delayed(Duration(seconds: 1), () => 'Student');
+  fetchLoginAmount() async {
+    return Future.delayed(
+        const Duration(
+          seconds: 1,
+        ),
+        () => 40);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Task 1', style: TextStyle(color: Colors.white)),
+        title: const Text('Task 1 (Part 02)',
+            style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue,
       ),
       body: Center(
         child: FutureBuilder(
-          future: reportUserRole(),
+          future: reportLogins(),
           builder: (context, snapshot) =>
               snapshot.connectionState == ConnectionState.waiting
-                  ? const CircularProgressIndicator()
+                  ? const CircularProgressIndicator(
+                      color: Colors.blue,
+                    )
                   : snapshot.connectionState == ConnectionState.done
                       ? Text('${snapshot.data}')
                       : const Text('Error'),
