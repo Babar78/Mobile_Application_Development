@@ -103,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Task 1: (Part 2)',
+                            'Task 1: (Part 3)',
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,

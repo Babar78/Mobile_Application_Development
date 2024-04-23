@@ -1,10 +1,16 @@
-// models/search.dart
 class Search {
   final List<String> tags;
   final String url;
   final String contentType;
   final String title;
   final String date;
+
+  // Define constants for JSON keys
+  static const String tagsKey = 'tags';
+  static const String urlKey = 'url';
+  static const String contentTypeKey = 'contentType';
+  static const String titleKey = 'title';
+  static const String dateKey = 'date';
 
   Search({
     required this.tags,
@@ -16,24 +22,24 @@ class Search {
 
   factory Search.fromJson(Map<String, dynamic> json) {
     return Search(
-      tags: (json['tags'] as List<dynamic>?)
+      tags: (json[tagsKey] as List<dynamic>?)
               ?.map((tag) => tag.toString())
               .toList() ??
           [],
-      url: json['url'].toString(),
-      contentType: json['contentType'].toString(),
-      title: json['title'].toString(),
-      date: json['date'].toString(),
+      url: json[urlKey].toString(),
+      contentType: json[contentTypeKey].toString(),
+      title: json[titleKey].toString(),
+      date: json[dateKey].toString(),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'tags': tags.map((tag) => tag.toString()).toList(),
-      'url': url.toString(),
-      'contentType': contentType.toString(),
-      'title': title.toString(),
-      'date': date.toString(),
+      tagsKey: tags.map((tag) => tag.toString()).toList(),
+      urlKey: url.toString(),
+      contentTypeKey: contentType.toString(),
+      titleKey: title.toString(),
+      dateKey: date.toString(),
     };
   }
 }
