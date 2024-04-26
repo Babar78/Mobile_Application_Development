@@ -50,8 +50,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> writeToFile(List<Map<String, dynamic>> data) async {
     try {
-      final directory = await getApplicationDocumentsDirectory();
-      final file = File('${directory.path}/searchlist.json');
+      // final directory = await getApplicationDocumentsDirectory();
+      final file = File(
+          '/Users/babar/Developer/Mobile App/MAD_LABS/lab_10/constants/searchlist.json');
       await file.writeAsString(jsonEncode(data));
     } catch (e) {
       print('Error writing to file: $e');
@@ -60,8 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> readJsonFile() async {
     try {
-      final directory = await getApplicationDocumentsDirectory();
-      final file = File('${directory.path}/searchlist.json');
+      // final directory = await getApplicationDocumentsDirectory();
+      final file = File(
+          '/Users/babar/Developer/Mobile App/MAD_LABS/lab_10/constants/searchlist.json');
       final data = await file.readAsString();
       setState(() {
         searchString =
